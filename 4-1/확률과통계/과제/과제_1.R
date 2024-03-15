@@ -16,6 +16,21 @@ names(y)[which(y==max(y))]
 
 
 ##### 1.2. 다양한 산포 수치측도 ###### 
+# 분산 
+var(pH)
+
+# 표준편차
+sd(pH)
+
+# 범위
+range(pH)
+
+# 사분위수 범위
+IQR(pH)
+
+# 변동계수
+sd(pH) / mean(pH)
+
 
 ##### 1.3. 도수분포표 ###### 
 freq.table<-table(pH)
