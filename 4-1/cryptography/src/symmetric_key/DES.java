@@ -1,5 +1,6 @@
 package symmetric_key;
 
+import java.util.Scanner;
 public class DES {
     private String key;
     private String message;
@@ -23,7 +24,9 @@ public class DES {
     }
 
     public static void main(String[] args) {
-
+        Scanner scanner = new Scanner(System.in);
+        String message = scanner.nextLine();
+        System.out.print("메세지를 입력해주세요: ");
     }
 
 }
