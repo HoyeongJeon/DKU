@@ -93,6 +93,49 @@ void insertLastNode(linkedList_h *list, char *x) {
 
 // Anika lene
 
+// 리스트에서 노드 p를 삭제하는 연산
+void deleteNode(linkedList_h *list, Node *p) {
+  Node *pre; // 삭제할 노드의 선행자 노드를 나타낼 포인터
+  if (list->head == NULL) {
+    return; // 공백 리스트라면 삭제 연산 중단
+  }
+
+  if (list->head->next == NULL) { // 리스트에 노드가 한개만 있는 경우
+    free(list->head);  // 첫 번째 노드를 메모리에서 해제하고
+    list->head = NULL; // 리스트 시작 포인터를 NULL로 설정
+    return;
+  } else if (p == NULL) { // 삭제할 노드가 없는 경우 연산 중단
+  } else {
+    pre = list->head;
+    while (pre->next != p) {
+      pre = pre->next;
+    }
+    // pre->next == p인 경우
+    pre->next = p->next; // 삭제할 p노드의 선행자를 p의 다음 노드와 연결
+    free(p);             // p 삭제
+  }
+
+  return;
+}
+
+// x에 해당하는 노드 찾기
+Node *searchNode(linkedList_h *list, char *x) {
+  Node *temp;
+  temp = list->head;
+  if (list->head == NULL) {
+    return NULL;
+  }
+
+  while (temp != NULL) {
+    if (strcmp(temp->data, x) == 0) {
+      return temp;
+    } else {
+      temp = temp->next;
+    }
+  }
+  return temp;
+}
+
 int main(void) {
   linkedList_h *L;
   L = createLinkedList_h();
@@ -116,6 +159,6 @@ int main(void) {
   printList(L);
 
   getchar();
-  return 0;
 
+  return 0;
 }
