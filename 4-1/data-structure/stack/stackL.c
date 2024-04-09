@@ -1,47 +1,46 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include "stackL.h"
 
-typedef struct Node {
-  int data;
-  struct Node *next;
-} Node;
-
-Node *top; // Pointer for stack top Node;
-
+// 스택이 비어있는지 확인
 int isStackEmpty(void) {
-  if (top == NULL) {
+  if(top == NULL) {
     return 1;
   } else {
     return 0;
   }
 }
 
-void push(int item) {
-  Node *temp = (Node *)malloc(sizeof(Node));
+// 스택의 top에 원소를 삽입하는 연산
+void push(element item) {
+  stackNode *temp = (stackNode *)malloc(sizeof(stackNode));
 
   temp->data = item;
-  temp->next = top;
+  temp->link = top;
   top = temp;
 }
 
-int pop(void) {
-  int item;
-  Node *temp = top;
+// 스택의 top에서 원소를 삭제하는 연산
+element pop(void) {
+  element item;
+  stackNode *temp = top;
 
-  if (isStackEmpty()) {
-    printf("\n\n Stack is empty !\n");
+  if(isStackEmpty()) {
+    printf("\n\n 스택이 비어있음! \n");
     return 0;
   } else {
     item = temp->data;
-    top = temp->next;
+    top = temp->link;
     free(temp);
     return item;
   }
 }
 
-int peek(void) {
-  if (isStackEmpty()) {
-    printf("\n\n Stack is empty !\n");
+element peek(void) {
+  stackNode *temp = top;
+
+  if(isStackEmpty()) {
+    printf("\n\n 스택이 비어있음! \n");
     return 0;
   } else {
     return top->data;
@@ -49,32 +48,15 @@ int peek(void) {
 }
 
 void printStack(void) {
-  Node *p = top;
-  printf("\n STACK [ ");
-  while (p) {
-    printf("%d ", p->data);
-    p = p->next;
+  if(isStackEmpty()) {
+    printf("\n\n 스택이 비어있음! \n");
+  } else {
+    stackNode *temp = top;
+    printf("\n 스택의 내용 : [ ");
+    while(temp != NULL) {
+      printf("%d ", temp->data);
+      temp = temp->link;
+    }
+    printf("] \n");
   }
-  printf("] ");
-}
-
-int main(void) {
-  int item;
-  top = NULL;
-
-  printf("\n** 연결 스택 연산 **\n");
-
-  printStack();
-  push(1);
-  printStack();
-  push(2);
-  printStack();
-  push(3);
-  printStack();
-
-  item = peek();
-  printStack();
-
-  printf("peek => %d", item);
-  return 0;
 }
