@@ -1,0 +1,23 @@
+#pragma
+typedef char element;
+
+typedef struct DQNode { // 데크의 노드 구조체
+    element data;
+    struct DQNode* llink;
+    struct DQNode* rlink;
+} DQNode;
+
+typedef struct DQueType
+{
+    DQNode* front, *rear;
+}DQueType;
+
+DQueType* createDQue(void);
+int isDeQEmpty(DQueType* DQ);
+void insertFront(DQueType* DQ, element item);
+void insertRear(DQueType* DQ, element item);
+element deleteFront(DQueType* DQ);
+element deleteRear(DQueType* DQ);
+element peekFront(DQueType* DQ);
+element peekRear(DQueType* DQ);
+void printDQ(DQueType* DQ);
