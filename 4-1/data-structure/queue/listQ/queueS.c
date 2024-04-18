@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include "queueS.h"
 
-// 큐 생성
-QueueType* createQueue(void){
+
+// List Q 생성
+QueueType* createQueue(void) {
     QueueType* Q;
     Q = (QueueType*)malloc(sizeof(QueueType));
     Q->front = -1;
@@ -13,7 +14,7 @@ QueueType* createQueue(void){
 
 int isQueueEmpty(QueueType* Q) {
     if(Q->front == Q->rear) {
-        printf("Queue is empty\n");
+        printf(" Q is empty! \n\t");
         return 1;
     } else {
         return 0;
@@ -22,7 +23,7 @@ int isQueueEmpty(QueueType* Q) {
 
 int isQueueFull(QueueType* Q) {
     if(Q->rear == Q_SIZE - 1) {
-        printf("Queue is full\n");
+        printf(" Q is Full! \n\t");
         return 1;
     } else {
         return 0;
@@ -31,16 +32,16 @@ int isQueueFull(QueueType* Q) {
 
 void enQueue(QueueType* Q, element item) {
     if(isQueueFull(Q)) {
-        return;
+        return ;
     } else {
         Q->rear++;
         Q->queue[Q->rear] = item;
     }
- }
+}
 
 element deQueue(QueueType* Q) {
     if(isQueueEmpty(Q)) {
-        return "Empty";
+        return "empty";
     } else {
         Q->front++;
         return Q->queue[Q->front];
@@ -48,8 +49,8 @@ element deQueue(QueueType* Q) {
 }
 
 element peekQ(QueueType* Q) {
-    if(isQueueEmpty(Q)) {
-        return "Empty";
+        if(isQueueEmpty(Q)) {
+        return "empty";
     } else {
         return Q->queue[Q->front + 1];
     }
@@ -57,9 +58,9 @@ element peekQ(QueueType* Q) {
 
 void printQ(QueueType* Q) {
     int i;
-    printf("Queue: [");
+    printf(" Queue : [");
     for(i = Q->front + 1; i <= Q->rear; i++) {
-        printf("%c", Q->queue[i]);
+        printf("%3c", Q->queue[i]);
     }
-    printf("]\n");
+    printf(" ]");
 }
