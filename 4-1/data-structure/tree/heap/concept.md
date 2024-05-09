@@ -30,6 +30,7 @@
 <img width="483" alt="image" src="https://github.com/HoyeongJeon/Capstone_Design/assets/78394999/98b472e1-4ee1-4a91-8c97-9b00821f2c2e">
 
 ```c
+// 순차 자료구조 방식으로 구현한 최대 Heap에 원소를 삽입하는 연산
 void insertHeap(heapType* h, int item) {
   int i;
   h->heapSize = h->heapSize + 1;
@@ -39,5 +40,39 @@ void insertHeap(heapType* h, int item) {
     i = i/2;
   }
   h->heap[i] = item;
+}
+```
+
+## Heap의 삭제 연산
+
+- Heap에서 원소를 삭제하는 연산은 언제나 루트 노드에 있는 원소를 삭제해서 반환
+- 최대 Heap에서 수행하는 삭제 연산은 키값이 가장 큰 원소를 삭제하는 연산
+- 최소 Heap에서 수행하는 삭제 연산은 키값이 가장 작은 원소를 삭제하는 연산
+- **중요한 것은 루트 노드의 원소를 삭제한 후에도 완전 이진 트리의 형태와 노드의 키값에 대한 Heap의 조건이 유지되어야 한다는 것**
+- 예를 들어 레스토랑에 테이블을 하나 치워야 한다면 그 테이블에 앉아 있던 사람들은 일단 빈 테이블로 옮겨 앉아 있다가 적당한 자리가 생기면 그 자리로 옮기고, 그러고 나서 좀 더 좋은 자리가 생기면 다시 자리를 옮길 것이다.
+
+<img width="396" alt="image" src="https://github.com/HoyeongJeon/DKU/assets/78394999/21ba66a3-d8b8-4aab-8471-e82ec73cbf19">
+
+```c
+int deleteHeap(heapType* h) {
+  int parent , child;
+  int item, temp;
+  item = h->heap[1];
+  temp = h->heap[h->heapSize];
+  h->heapSize = h->heapSize - 1;
+  parent = 1;
+  child = 2;
+  while(child <= h->heapSize) {
+    if((child < h->heapSize) && (h->heap[child] < h->heap[child+1]))
+      child++;
+    if(temp >= h->heap[child]) break;
+    else {
+      h->heap[parent] = h->heap[child];
+      parent = child;
+      child = child * 2;
+    }
+  }
+  h->heap[parent] = temp;
+  return item;
 }
 ```
