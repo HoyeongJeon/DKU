@@ -7,5 +7,5 @@ typedef struct treeNode
     struct treeNode* right;
 }treeNode;
 
-treeNode* makeRootNode(int size, treeNode* leftNode, treeNode* rightNode);
+treeNode* makeRootNode(int size, treeNode* leftNode, treeNode* right);
 int postorder_FolderSize(treeNode* root);
