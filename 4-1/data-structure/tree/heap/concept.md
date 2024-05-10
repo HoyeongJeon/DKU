@@ -60,8 +60,8 @@ int deleteHeap(heapType* h) {
   item = h->heap[1];
   temp = h->heap[h->heapSize];
   h->heapSize = h->heapSize - 1;
-  parent = 1;
-  child = 2;
+  parent = 1; // root
+  child = 2; // root의 left child
   while(child <= h->heapSize) {
     if((child < h->heapSize) && (h->heap[child] < h->heap[child+1]))
       child++;
