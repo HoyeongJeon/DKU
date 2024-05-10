@@ -1,11 +1,11 @@
 #pragma once
 typedef char element;
 
-typedef struct treeNode 
+typedef struct  treeNode
 {
     element data;
-    struct treeNode* left;
-    struct treeNode* right;
+    struct treeNode *left;
+    struct treeNode *right;
 } treeNode;
 
 treeNode* makeRootNode(element data, treeNode* leftNode, treeNode* rightNode);

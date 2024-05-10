@@ -2,7 +2,6 @@
 #include "traversalBT.h"
 
 int main(void) {
-    // (A*B - C/D) 수식 이진 트리 생성
     treeNode* n7 = makeRootNode('D', NULL, NULL);
     treeNode* n6 = makeRootNode('C', NULL, NULL);
     treeNode* n5 = makeRootNode('B', NULL, NULL);
@@ -11,15 +10,14 @@ int main(void) {
     treeNode* n2 = makeRootNode('*', n4, n5);
     treeNode* n1 = makeRootNode('-', n2, n3);
 
-    printf("\n preorder : ");
+    printf("\n Preorder: ");
     preorder(n1);
 
-    printf("\n inorder : ");
+
+    printf("\n Inorder: ");
     inorder(n1);
 
-    printf("\n postorder : ");
+    printf("\n Postorder: ");
     postorder(n1);
-    
-    getchar();
     return 0;
 }
