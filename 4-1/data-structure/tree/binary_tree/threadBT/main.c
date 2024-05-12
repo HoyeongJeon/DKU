@@ -15,9 +15,7 @@ int main(void) {
     n5->right = n1;
     n6->right = n3;
 
-    printf("스레드 이진 트리의 중위 순회: ");
-    threadInorder(n1);
-
-    getchar();
-    return 0;
-}
+    printf("\n 스레드 이진 트리의 중위 순회: ");
+    threadInorder(n1);  
+    getchar(); return 0;
+}  
