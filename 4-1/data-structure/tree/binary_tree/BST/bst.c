@@ -42,4 +42,73 @@ treeNode* insertBSTNode(treeNode* p, element x) {
 }
 
 // 루트 노드부터 탐색해 키값과 같은 노드를 찾아 삭제하는 연산
-void deleteBSTNode(treeNode* root, element key) {}
+void deleteBSTNode(treeNode* root, element key) {
+    treeNode* parent, * p, *succ, *succ_parent;
+    treeNode* child;
+
+    parent = NULL;
+    p = root;
+    while ((p != NULL) && (p->key != key)) { // 삭제할 노드의 위치 탐색
+        parent = p;
+        if(key < p->key) p = p->left;
+        else p = p->right;
+    }
+
+    // 삭제할 노드가 없는 경우
+    if(p == NULL) {
+        printf("\n 찾는 키가 이진 트리에 없습니다!");
+        return ;
+    }
+
+    // 삭제할 노드가 단말 노드인 경우
+    if((p->left == NULL) && (p->right == NULL)) {
+        // 삭제할 노드가 단말 노드인 경우
+        if(parent != NULL) { // 단말 노드가 부모 노드를 가지고 있을 경우
+            if(parent->left == p) {
+                parent->left = NULL;
+            } else {
+                parent->right = NULL;
+            }
+        } else { // 단만 노드가 부모 노드를 가지지 않을 경우 (루트 노드)
+            root = NULL;
+        }
+    } // 삭제할 노드가 자식 노드를 한 개 가진 경우 
+    else if((p->left == NULL) || (p->right == NULL)) {
+        if(p->left != NULL) { // 삭제할 노드의 자식이 왼쪽 자식일 경우
+            child = p->left;
+        } else { // 삭제할 노드의 자식이 오른쪽 자식일 경우
+            child = p->right;
+        }
+
+        if(parent != NULL) { // 삭제할 노드가 부모 노드를 가지고 있을 경우
+            if(parent->left == p) {
+                parent->left = child;
+            } else {
+                parent->right = child;
+            }
+        } else { // 삭제할 노드가 부모 노드를 가지지 않을 경우 (루트 노드)
+            root = child;
+        }
+    } // 삭제할 노드가 자식 노드를 두 개 가진 경우
+    else {
+        succ_parent = p;
+        succ = p->left;
+        // 왼쪽 서브 트리에서 후계자 찾기
+        while(succ->right != NULL) { 
+            succ_parent = succ;
+            succ = succ->right;
+        }
+        // 후계자의 부모 노드와 연결 끊기
+        if(succ_parent->left == succ){
+            succ_parent->left = succ->left;
+        } else {
+            succ_parent->right = succ->left;
+        }
+        // 삭제할 노드의 키를 후계자의 키로 대체
+        p->key = succ->key;
+        // 삭제할 노드를 후계자로 변경
+        p = succ;
+    }
+    // 메모리 해제
+    free(p);
+}

@@ -67,4 +67,5 @@
 <img width="471" alt="image" src="https://github.com/HoyeongJeon/DKU/assets/78394999/1c014842-6c57-4bcd-9f91-e0f4d9a1114a">
 
 **이진 탐색 트리의 노드 삭제 알고리즘**
+
 <img width="473" alt="image" src="https://github.com/HoyeongJeon/DKU/assets/78394999/1336e2f8-bffb-4bcb-a0b5-faa8c7f91045">
