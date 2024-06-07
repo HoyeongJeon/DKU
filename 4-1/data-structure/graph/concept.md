@@ -154,3 +154,12 @@ G6은 정점의 개수가 4개인 방향 그래프이므로, 완전 그래프가
 <img width="473" alt="image" src="https://github.com/HoyeongJeon/DKU/assets/78394999/9a2173d6-af75-4caf-b1fb-f3552b864d54">
 
 ### 2. 너비 우선 탐색(Breadth First Search, BFS)
+
+시작 정점에 인접한 정점을 모두 차례로 방문하고 나서 방문했던 정점을 시작으로 다시 인접한 정점을 차례로 방문하는 방식이다. <br/>가까운 정점을 먼저 방문하고 멀리 있는 정점을 나중에 방문하는 순회 방법이다.
+-> 인접한 정점에 대해 차례로 다시 너비 우선 탐색을 반복해야 하므로 탐색 과정에서 정점 순서를 관리하기 위해 선입선출 구조를 갖는 큐를 사용한다.
+
+너비 우선 탐색의 수행 순서를 정리하면 다음과 같다.
+<img width="476" alt="image" src="https://github.com/HoyeongJeon/DKU/assets/78394999/c2317964-0d2b-473e-bb92-0f8004bd85d6">
+
+너비 우선 탐색을 알고리즘 정의하여 구현하면 다음과 같다.
+<img width="471" alt="image" src="https://github.com/HoyeongJeon/DKU/assets/78394999/01292473-d830-4f7b-b7c6-0d47e3b67607">
