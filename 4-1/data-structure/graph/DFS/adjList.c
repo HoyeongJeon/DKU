@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "adjList.h"
 
 // 공백 리스트를 생성하는 연산
