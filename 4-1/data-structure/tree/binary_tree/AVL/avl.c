@@ -15,7 +15,7 @@ treeNode* RR_rotate(treeNode* parent) {
     parent->right = child->left;
     child->left = parent;
 }
-
+ 
 treeNode* LR_rotate(treeNode* parent) {
     treeNode* child = parent->left;
     parent->left = RR_rotate(child);
